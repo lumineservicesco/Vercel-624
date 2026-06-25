@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luminé Services Co. — Turnover Cleaning for Real Estate Professionals</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0B1C2C;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5EDD6;
+    --cream: #FAF7F2;
+    --dark: #0D1117;
+    --text: #1A2535;
+    --muted: #6B7A8D;
+    --white: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2.5rem;
+    background: rgba(11,28,44,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 0.55rem 1.3rem;
+    border-radius: 2px;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 2.5rem 5rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(201,168,76,0.05) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4.4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.65);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.85rem 2rem;
+    border: none;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    padding: 1.8rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gold);
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 2.5rem; }
+
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+
+  .section-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* PRICING */
+  #pricing { background: var(--white); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .price-card {
+    border: 1px solid #E4DDD1;
+    border-radius: 6px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    background: var(--white);
+    transition: box-shadow 0.25s, transform 0.2s;
+  }
+
+  .price-card:hover {
+    box-shadow: 0 12px 40px rgba(11,28,44,0.1);
+    transform: translateY(-3px);
+  }
+
+  .price-card.featured {
+    background: var(--navy);
+    border-color: var(--gold);
+    color: var(--white);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -1px; right: 2rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .price-card-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+  }
+
+  .price-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .price-card.featured .price-card-name { color: var(--white); }
+
+  .price-amount {
+    margin: 1.5rem 0 0.3rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.2rem;
+  }
+
+  .price-dollar {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--gold);
+    align-self: flex-start;
+    margin-top: 0.4rem;
+  }
+
+  .price-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--navy);
+  }
+
+  .price-card.featured .price-num { color: var(--white); }
+
+  .price-unit {
+    font-size: 0.8rem;
+    color: var(--muted);
+    align-self: flex-end;
+    padding-bottom: 0.4rem;
+  }
+
+  .price-card.featured .price-unit { color: rgba(255,255,255,0.5); }
+
+  .price-range {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .price-card.featured .price-range { color: rgba(255,255,255,0.5); }
+
+  .price-divider {
+    height: 1px;
+    background: #E4DDD1;
+    margin: 1.5rem 0;
+  }
+
+  .price-card.featured .price-divider { background: rgba(255,255,255,0.1); }
+
+  .price-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .price-features li {
+    font-size: 0.88rem;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    line-height: 1.5;
+  }
+
+  .price-card.featured .price-features li { color: rgba(255,255,255,0.8); }
+
+  .price-features li::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 0.6rem;
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+
+  .price-card-btn {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 2px;
+    border: 1px solid var(--navy);
+    background: transparent;
+    color: var(--navy);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .price-card-btn:hover { background: var(--navy); color: var(--white); }
+
+  .price-card.featured .price-card-btn {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
+  }
+
+  .price-card.featured .price-card-btn:hover { background: var(--gold-light); }
+
+  /* ADD-ONS */
+  .addons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .addon-card {
+    background: var(--cream);
+    border: 1px solid #E4DDD1;
+    border-radius: 4px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .addon-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .addon-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+
+  .addon-price {
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .addon-desc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* BOOKING */
+  #booking { background: var(--cream); }
+
+  .booking-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .booking-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+
+  .booking-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .booking-step {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .step-text strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+
+  .step-text p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* FORM */
+  .booking-form {
+    background: var(--white);
+    border: 1px solid #E4DDD1;
+    border-radius: 6px;
+    padding: 2.5rem;
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-sub {
+    font-size: 0.83rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.45rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #D8D0C4;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    background: var(--cream);
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+    background: var(--white);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A84C' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  .quote-toggle {
+    background: var(--gold-pale);
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 4px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .quote-toggle input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 0.15rem;
+    accent-color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .quote-toggle-text {
+    font-size: 0.83rem;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  .quote-toggle-text strong {
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .custom-quote-fields {
+    display: none;
+    background: var(--cream);
+    border: 1px solid #D8D0C4;
+    border-radius: 4px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .custom-quote-fields.visible { display: block; }
+
+  .submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .submit-btn:hover { background: #162C44; }
+
+  /* SUCCESS */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .success-msg .check {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .success-msg h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .success-msg p {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  /* CONTACT BANNER */
+  .contact-banner {
+    background: var(--navy);
+    padding: 4rem 2.5rem;
+    text-align: center;
+  }
+
+  .contact-banner-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .contact-banner h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-banner p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-options {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-opt {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--gold);
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.7rem 1.5rem;
+    border-radius: 2px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .contact-opt:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 2.5rem;
+    text-align: center;
+  }
+
+  footer .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  footer .footer-logo span { color: var(--gold); }
+
+  footer p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.04em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero-grid, .booking-layout { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .addons-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.5rem; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-text { animation: fadeUp 0.7s ease both; }
+  .hero-stats { animation: fadeUp 0.7s 0.2s ease both; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Luminé<span>·</span></div>
+  <ul class="nav-links">
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#addons">Add-Ons</a></li>
+    <li><a href="#booking">Book Now</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#booking" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Realtor-Focused Cleaning</div>
+      <h1>List Faster.<br><em>Close Cleaner.</em></h1>
+      <p>Luminé Services Co. delivers dependable turnover cleaning built around real estate timelines — so your listings are show-ready every time, without the follow-up calls.</p>
+      <div class="hero-buttons">
+        <a href="#booking" class="btn-primary">Book a Clean</a>
+        <a href="#pricing" class="btn-outline">View Pricing</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Turnaround available</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2.5k</div>
+        <div class="stat-label">Sq ft max per service</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Metro Atlanta markets</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years commercial experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-tag">Transparent Pricing</div>
+    <h2 class="section-title">Flat-Rate Turnover Packages</h2>
+    <p class="section-sub">No surprise invoices. Pricing based on square footage so you can plan ahead for every listing — vacant or occupied transition.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-card-tag">Starter</div>
+        <div class="price-card-name">Standard Turnover</div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.5;margin-bottom:0.5rem;">Ideal for condos, apartments & small listings</p>
+        <div class="price-amount">
+          <span class="price-dollar">$</span>
+          <span class="price-num">175</span>
+        </div>
+        <div class="price-range">Up to 1,000 sq ft</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Full kitchen & bathroom deep clean</li>
+          <li>Floors vacuumed & mopped</li>
+          <li>All surfaces wiped & sanitized</li>
+          <li>Baseboards & door frames</li>
+          <li>Interior windows & mirrors</li>
+          <li>Trash removal</li>
+        </ul>
+        <button class="price-card-btn" onclick="selectPackage('Standard Turnover — Up to 1,000 sq ft — $175')">Book This Package</button>
+      </div>
+
+      <div class="price-card featured">
+        <div class="featured-badge">Most Popular</div>
+        <div class="price-card-tag">Core</div>
+        <div class="price-card-name">Premier Turnover</div>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.5;margin-bottom:0.5rem;">Our most-booked realtor package</p>
+        <div class="price-amount">
+          <span class="price-dollar">$</span>
+          <span class="price-num">265</span>
+        </div>
+        <div class="price-range">1,001–1,800 sq ft</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Everything in Standard, plus:</li>
+          <li>Appliance exterior & interior (microwave, oven)</li>
+          <li>Cabinet interiors wiped down</li>
+          <li>Ceiling fan blades dusted</li>
+          <li>Light fixture wipe-down</li>
+          <li>Walk-in closet detail</li>
+          <li>Priority scheduling</li>
+        </ul>
+        <button class="price-card-btn" onclick="selectPackage('Premier Turnover — 1,001–1,800 sq ft — $265')">Book This Package</button>
+      </div>
+
+      <div class="price-card">
+        <div class="price-card-tag">Executive</div>
+        <div class="price-card-name">Elite Turnover</div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.5;margin-bottom:0.5rem;">Larger listings, maximum detail</p>
+        <div class="price-amount">
+          <span class="price-dollar">$</span>
+          <span class="price-num">365</span>
+        </div>
+        <div class="price-range">1,801–2,500 sq ft</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Everything in Premier, plus:</li>
+          <li>Full refrigerator detail</li>
+          <li>Garage sweep-out</li>
+          <li>Patio/deck wipe-down</li>
+          <li>Window sills & tracks</li>
+          <li>Post-clean walkthrough checklist</li>
+          <li>Same-day rebook priority</li>
+        </ul>
+        <button class="price-card-btn" onclick="selectPackage('Elite Turnover — 1,801–2,500 sq ft — $365')">Book This Package</button>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:0.82rem;color:var(--muted);margin-top:0.5rem;">
+      ✦ &nbsp;Prices reflect vacant properties in standard condition. Occupied or heavy-soil properties may require a custom quote. &nbsp;✦
+    </p>
+  </div>
+</section>
+
+<section id="addons" style="background:var(--cream);padding-top:2rem;">
+  <div class="section-inner">
+    <div class="section-tag">Enhance Your Service</div>
+    <h2 class="section-title">À La Carte Add-Ons</h2>
+    <p class="section-sub">Pair with any package for a fully photo-ready listing.</p>
+
+    <div class="addons-grid">
+      <div class="addon-card">
+        <div class="addon-icon">🪟</div>
+        <div class="addon-name">Interior Window Wash</div>
+        <div class="addon-price">+$45</div>
+        <div class="addon-desc">Full streak-free detail on all interior windows</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🧺</div>
+        <div class="addon-name">Carpet Spot Treatment</div>
+        <div class="addon-price">+$55</div>
+        <div class="addon-desc">Pre-show spot and odor treatment for carpeted areas</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🔥</div>
+        <div class="addon-name">Oven Deep Clean</div>
+        <div class="addon-price">+$35</div>
+        <div class="addon-desc">Interior oven & range hood degreased and detailed</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🚿</div>
+        <div class="addon-name">Grout & Tile Scrub</div>
+        <div class="addon-price">+$50</div>
+        <div class="addon-desc">Bathroom tile grout scrubbed and sanitized</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🧲</div>
+        <div class="addon-name">Fridge Interior Detail</div>
+        <div class="addon-price">+$40</div>
+        <div class="addon-desc">Full refrigerator interior wipe-down and deodorize</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🌿</div>
+        <div class="addon-name">Odor Neutralization</div>
+        <div class="addon-price">+$30</div>
+        <div class="addon-desc">Eco-safe treatment for pet, smoke, or musty odors</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🏠</div>
+        <div class="addon-name">Garage Sweep</div>
+        <div class="addon-price">+$45</div>
+        <div class="addon-desc">Full garage floor sweep, cobweb removal, surface wipe</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">⚡</div>
+        <div class="addon-name">Rush / Same-Day</div>
+        <div class="addon-price">+$75</div>
+        <div class="addon-desc">Confirmed within 4 hours, subject to availability</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="section-inner">
+    <div class="booking-layout">
+      <div class="booking-info">
+        <div class="section-tag">Easy Booking</div>
+        <h2 class="section-title">Book in<br>3 Simple Steps</h2>
+        <p class="section-sub">No phone tag. No guesswork. Fill out the form and we'll confirm within 2 business hours.</p>
+        <ul class="booking-steps">
+          <li class="booking-step">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <strong>Choose your package</strong>
+              <p>Select the tier that matches your property size, or request a custom quote below.</p>
+            </div>
+          </li>
+          <li class="booking-step">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <strong>Submit property details</strong>
+              <p>Share the address, access notes, and preferred date. We handle the rest.</p>
+            </div>
+          </li>
+          <li class="booking-step">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <strong>Get confirmed</strong>
+              <p>Receive a confirmation with your arrival window. Pay after service is complete.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div style="margin-top:2.5rem;padding:1.5rem;background:var(--white);border:1px solid #E4DDD1;border-radius:4px;">
+          <p style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;">Service Areas</p>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="font-size:0.85rem;color:var(--navy);font-weight:500;">📍 Covington / Newton County</div>
+            <div style="font-size:0.85rem;color:var(--navy);font-weight:500;">📍 Henry County</div>
+            <div style="font-size:0.85rem;color:var(--muted);">📍 Griffin / Lamar County <span style="font-size:0.75rem;">(coming soon)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="booking-form" id="bookingFormWrap">
+        <div id="formContent">
+          <h3 class="form-title">Request Your Booking</h3>
+          <p class="form-sub">Standard packages or custom quotes — we handle both right here.</p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" id="firstName" placeholder="Riley">
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" id="lastName" placeholder="Johnson">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="email" placeholder="you@brokerage.com">
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" id="phone" placeholder="(404) 000-0000">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Property Address</label>
+            <input type="text" id="address" placeholder="123 Listing Lane, Covington, GA 30014">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Package</label>
+              <select id="packageSelect">
+                <option value="">— Select a package —</option>
+                <option value="Standard Turnover — Up to 1,000 sq ft — $175">Standard Turnover (up to 1k sq ft) — $175</option>
+                <option value="Premier Turnover — 1,001–1,800 sq ft — $265">Premier Turnover (1,001–1,800 sq ft) — $265</option>
+                <option value="Elite Turnover — 1,801–2,500 sq ft — $365">Elite Turnover (1,801–2,500 sq ft) — $365</option>
+                <option value="custom">Request Custom Quote</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Preferred Date</label>
+              <input type="date" id="prefDate">
+            </div>
+          </div>
+
+          <div class="quote-toggle">
+            <input type="checkbox" id="customQuoteCheck" onchange="toggleCustomQuote(this)">
+            <div class="quote-toggle-text">
+              <strong>Need a custom quote?</strong>
+              Check here for oversized properties, heavy-soil conditions, post-construction, or occupied move-outs.
+            </div>
+          </div>
+
+          <div class="custom-quote-fields" id="customFields">
+            <div class="form-group" style="margin-bottom:0.8rem;">
+              <label>Property Size (sq ft)</label>
+              <input type="text" id="sqft" placeholder="e.g. 3,200">
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label>Describe the Situation</label>
+              <textarea id="situation" placeholder="Post-tenant, construction clean, heavy grease, occupied transition..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Add-Ons (optional)</label>
+            <select id="addons">
+              <option value="">— Select add-ons or note below —</option>
+              <option>Interior Window Wash (+$45)</option>
+              <option>Carpet Spot Treatment (+$55)</option>
+              <option>Oven Deep Clean (+$35)</option>
+              <option>Grout & Tile Scrub (+$50)</option>
+              <option>Fridge Interior Detail (+$40)</option>
+              <option>Odor Neutralization (+$30)</option>
+              <option>Garage Sweep (+$45)</option>
+              <option>Rush / Same-Day (+$75)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Additional Notes</label>
+            <textarea id="notes" placeholder="Gate code, lockbox info, access notes, specific concerns..."></textarea>
+          </div>
+
+          <button class="submit-btn" onclick="submitForm()">Submit Booking Request →</button>
+          <p style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;text-align:center;">We'll confirm within 2 business hours. No charge until service is complete.</p>
+        </div>
+
+        <div class="success-msg" id="successMsg">
+          <div class="check">✦</div>
+          <h3>Request Received</h3>
+          <p>Thank you — we'll reach out within 2 business hours to confirm your booking details.</p>
+          <p style="margin-top:0.5rem;">Questions? Email us at <strong style="color:var(--gold);">hello@luminellc.org</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="contact-banner" id="contact">
+  <div class="contact-banner-inner">
+    <div class="section-tag" style="justify-content:center;margin-bottom:0.8rem;">Get In Touch</div>
+    <h2>Prefer to Talk It Through?</h2>
+    <p>Reach out directly for large portfolios, recurring service agreements, or same-day needs.</p>
+    <div class="contact-options">
+      <a href="tel:+14042550000" class="contact-opt">📞 (404) 255-0000</a>
+      <a href="mailto:hello@luminellc.org" class="contact-opt">✉ hello@luminellc.org</a>
+      <a href="#booking" class="contact-opt">📋 Custom Quote Form</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Luminé<span> Services Co.</span></div>
+  <p>Metro Atlanta · Covington · Henry County · Griffin &nbsp;|&nbsp; Light commercial cleaning, redefined.</p>
+</footer>
+
+<script>
+  // Pre-select a package from pricing buttons
+  function selectPackage(pkgName) {
+    const sel = document.getElementById('packageSelect');
+    for (let i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === pkgName) {
+        sel.selectedIndex = i;
+        break;
+      }
+    }
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Toggle custom quote fields
+  function toggleCustomQuote(cb) {
+    const fields = document.getElementById('customFields');
+    fields.classList.toggle('visible', cb.checked);
+    if (cb.checked) {
+      document.getElementById('packageSelect').value = 'custom';
+    }
+  }
+
+  // Also show custom fields if dropdown picks custom
+  document.getElementById('packageSelect').addEventListener('change', function() {
+    const cb = document.getElementById('customQuoteCheck');
+    const fields = document.getElementById('customFields');
+    if (this.value === 'custom') {
+      cb.checked = true;
+      fields.classList.add('visible');
+    } else {
+      cb.checked = false;
+      fields.classList.remove('visible');
+    }
+  });
+
+  // Set min date to today
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('prefDate').min = today;
+
+  function submitForm() {
+    const required = ['firstName', 'lastName', 'email', 'phone', 'address'];
+    let valid = true;
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.style.borderColor = '#E05A5A';
+        valid = false;
+      } else {
+        el.style.borderColor = '';
+      }
+    });
+    if (!valid) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+</body>
+</html>
