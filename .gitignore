@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Local environment values and Vercel project metadata
+.env
+.env.*
+!.env.example
+.vercel/
+
+# Local tooling and generated QA artifacts
+.omx/
+.playwright-cli/
+output/
+coverage/
+
+# OS/editor noise
+.DS_Store
+*.log

@@ -279,18 +279,21 @@
 
   .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
     margin-bottom: 3rem;
   }
 
   .price-card {
     border: 1px solid #E4DDD1;
     border-radius: 6px;
-    padding: 2.5rem 2rem;
+    padding: 2.2rem 1.5rem;
     position: relative;
     background: var(--white);
     transition: box-shadow 0.25s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .price-card:hover {
@@ -306,14 +309,14 @@
 
   .featured-badge {
     position: absolute;
-    top: -1px; right: 2rem;
+    top: -1px; right: 1.5rem;
     background: var(--gold);
     color: var(--navy);
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 0.3rem 0.9rem;
+    padding: 0.3rem 0.8rem;
     border-radius: 0 0 4px 4px;
   }
 
@@ -327,7 +330,7 @@
 
   .price-card-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     font-weight: 400;
     margin-bottom: 0.5rem;
   }
@@ -335,7 +338,7 @@
   .price-card.featured .price-card-name { color: var(--white); }
 
   .price-amount {
-    margin: 1.5rem 0 0.3rem;
+    margin: 1.2rem 0 0.3rem;
     display: flex;
     align-items: baseline;
     gap: 0.2rem;
@@ -352,7 +355,7 @@
 
   .price-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3.2rem;
+    font-size: 3rem;
     font-weight: 300;
     line-height: 1;
     color: var(--navy);
@@ -372,7 +375,7 @@
   .price-range {
     font-size: 0.82rem;
     color: var(--muted);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
   }
 
   .price-card.featured .price-range { color: rgba(255,255,255,0.5); }
@@ -380,7 +383,7 @@
   .price-divider {
     height: 1px;
     background: #E4DDD1;
-    margin: 1.5rem 0;
+    margin: 1.2rem 0;
   }
 
   .price-card.featured .price-divider { background: rgba(255,255,255,0.1); }
@@ -391,15 +394,16 @@
     flex-direction: column;
     gap: 0.75rem;
     margin-bottom: 2rem;
+    text-align: left;
   }
 
   .price-features li {
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     color: var(--text);
     display: flex;
     align-items: flex-start;
-    gap: 0.65rem;
-    line-height: 1.5;
+    gap: 0.55rem;
+    line-height: 1.4;
   }
 
   .price-card.featured .price-features li { color: rgba(255,255,255,0.8); }
@@ -420,12 +424,13 @@
     background: transparent;
     color: var(--navy);
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
+    margin-top: auto;
   }
 
   .price-card-btn:hover { background: var(--navy); color: var(--white); }
@@ -676,6 +681,29 @@
 
   .submit-btn:hover { background: #162C44; }
 
+  .submit-btn:disabled {
+    cursor: wait;
+    opacity: 0.7;
+  }
+
+  .form-status {
+    margin-top: 0.85rem;
+    color: #B42318;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .form-status:empty { display: none; }
+
+  .honeypot {
+    position: absolute !important;
+    left: -10000px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+  }
+
   /* SUCCESS */
   .success-msg {
     display: none;
@@ -771,6 +799,10 @@
   }
 
   /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -797,7 +829,7 @@
   <div class="nav-logo">Luminé<span>·</span></div>
   <ul class="nav-links">
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#addons">Add-Ons</a></li>
+    <li><a href="#addons-section">Add-Ons</a></li>
     <li><a href="#booking">Book Now</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#booking" class="nav-cta">Get a Quote</a></li>
@@ -807,9 +839,9 @@
 <section class="hero">
   <div class="hero-grid">
     <div class="hero-text">
-      <div class="hero-eyebrow">Realtor-Focused Cleaning</div>
+      <div class="hero-eyebrow">Realtor & Commercial Cleaning</div>
       <h1>List Faster.<br><em>Close Cleaner.</em></h1>
-      <p>Luminé Services Co. delivers dependable turnover cleaning built around real estate timelines — so your listings are show-ready every time, without the follow-up calls.</p>
+      <p>Luminé Services Co. delivers dependable turnover and workspace cleaning built around your professional timelines — so your spaces are pristine every time, without the follow-up calls.</p>
       <div class="hero-buttons">
         <a href="#booking" class="btn-primary">Book a Clean</a>
         <a href="#pricing" class="btn-outline">View Pricing</a>
@@ -839,10 +871,31 @@
 <section id="pricing">
   <div class="section-inner">
     <div class="section-tag">Transparent Pricing</div>
-    <h2 class="section-title">Flat-Rate Turnover Packages</h2>
-    <p class="section-sub">No surprise invoices. Pricing based on square footage so you can plan ahead for every listing — vacant or occupied transition.</p>
+    <h2 class="section-title">Flat-Rate Cleaning Packages</h2>
+    <p class="section-sub">No surprise invoices. Straightforward pricing so you can plan ahead for every property layout or active workspace environment.</p>
 
     <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-card-tag">Workspace</div>
+        <div class="price-card-name">Office Cleaning</div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.5;margin-bottom:0.5rem;">Tailored for modern professional work environments</p>
+        <div class="price-amount">
+          <span class="price-dollar">$</span>
+          <span class="price-num">150</span>
+        </div>
+        <div class="price-range">Starting Package Rate</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Desk surface wiping & sanitizing</li>
+          <li>Trash & recycling collection</li>
+          <li>Floor vacuuming & mopping</li>
+          <li>Breakroom counter & sink clean</li>
+          <li>Restroom cleaning & restocking</li>
+          <li>Common area dusting</li>
+        </ul>
+        <button class="price-card-btn" onclick="selectPackage('Office Cleaning — Starting at $150')">Book Office Clean</button>
+      </div>
+
       <div class="price-card">
         <div class="price-card-tag">Starter</div>
         <div class="price-card-name">Standard Turnover</div>
@@ -877,7 +930,7 @@
         <div class="price-divider"></div>
         <ul class="price-features">
           <li>Everything in Standard, plus:</li>
-          <li>Appliance exterior & interior (microwave, oven)</li>
+          <li>Appliance exterior & interior</li>
           <li>Cabinet interiors wiped down</li>
           <li>Ceiling fan blades dusted</li>
           <li>Light fixture wipe-down</li>
@@ -903,7 +956,7 @@
           <li>Garage sweep-out</li>
           <li>Patio/deck wipe-down</li>
           <li>Window sills & tracks</li>
-          <li>Post-clean walkthrough checklist</li>
+          <li>Post-clean walkthrough</li>
           <li>Same-day rebook priority</li>
         </ul>
         <button class="price-card-btn" onclick="selectPackage('Elite Turnover — 1,801–2,500 sq ft — $365')">Book This Package</button>
@@ -911,16 +964,16 @@
     </div>
 
     <p style="text-align:center;font-size:0.82rem;color:var(--muted);margin-top:0.5rem;">
-      ✦ &nbsp;Prices reflect vacant properties in standard condition. Occupied or heavy-soil properties may require a custom quote. &nbsp;✦
+      ✦ &nbsp;Prices reflect vacant properties or standardized floor spaces in typical condition. Heavy-soil environments may require a custom quote. &nbsp;✦
     </p>
   </div>
 </section>
 
-<section id="addons" style="background:var(--cream);padding-top:2rem;">
+<section id="addons-section" style="background:var(--cream);padding-top:2rem;">
   <div class="section-inner">
     <div class="section-tag">Enhance Your Service</div>
     <h2 class="section-title">À La Carte Add-Ons</h2>
-    <p class="section-sub">Pair with any package for a fully photo-ready listing.</p>
+    <p class="section-sub">Pair with any package for a fully photo-ready listing or pristine workspace.</p>
 
     <div class="addons-grid">
       <div class="addon-card">
@@ -987,21 +1040,21 @@
             <div class="step-num">1</div>
             <div class="step-text">
               <strong>Choose your package</strong>
-              <p>Select the tier that matches your property size, or request a custom quote below.</p>
+              <p>Select the service tier that matches your setup requirements, or flag for a custom layout quote.</p>
             </div>
           </li>
           <li class="booking-step">
             <div class="step-num">2</div>
             <div class="step-text">
-              <strong>Submit property details</strong>
-              <p>Share the address, access notes, and preferred date. We handle the rest.</p>
+              <strong>Submit site details</strong>
+              <p>Share the location address, key operational access codes, and your timeline dates.</p>
             </div>
           </li>
           <li class="booking-step">
             <div class="step-num">3</div>
             <div class="step-text">
               <strong>Get confirmed</strong>
-              <p>Receive a confirmation with your arrival window. Pay after service is complete.</p>
+              <p>Receive an absolute confirmation message outlining your arrival window clearly.</p>
             </div>
           </li>
         </ul>
@@ -1017,42 +1070,48 @@
       </div>
 
       <div class="booking-form" id="bookingFormWrap">
-        <div id="formContent">
+        <form action="/api/contact" method="POST" id="formContent" onsubmit="return submitForm(event)">
           <h3 class="form-title">Request Your Booking</h3>
           <p class="form-sub">Standard packages or custom quotes — we handle both right here.</p>
 
+          <div class="honeypot" aria-hidden="true">
+            <label for="website">Leave this field empty</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
           <div class="form-row">
             <div class="form-group">
-              <label>First Name</label>
-              <input type="text" id="firstName" placeholder="Riley">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" placeholder="Riley" maxlength="80" autocomplete="given-name" required>
             </div>
             <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" id="lastName" placeholder="Johnson">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Johnson" maxlength="80" autocomplete="family-name" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label>Email</label>
-              <input type="email" id="email" placeholder="you@brokerage.com">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@brokerage.com" maxlength="254" autocomplete="email" required>
             </div>
             <div class="form-group">
-              <label>Phone</label>
-              <input type="tel" id="phone" placeholder="(404) 000-0000">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(770) 376-1393" maxlength="40" autocomplete="tel" required>
             </div>
           </div>
 
           <div class="form-group">
-            <label>Property Address</label>
-            <input type="text" id="address" placeholder="123 Listing Lane, Covington, GA 30014">
+            <label for="address">Property Address</label>
+            <input type="text" id="address" name="address" placeholder="123 Listing Lane, Covington, GA 30014" maxlength="300" autocomplete="street-address" required>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label>Package</label>
-              <select id="packageSelect">
+              <label for="packageSelect">Package</label>
+              <select id="packageSelect" name="package">
                 <option value="">— Select a package —</option>
+                <option value="Office Cleaning — Starting at $150">Office Cleaning (Workspace plan) — From $150</option>
                 <option value="Standard Turnover — Up to 1,000 sq ft — $175">Standard Turnover (up to 1k sq ft) — $175</option>
                 <option value="Premier Turnover — 1,001–1,800 sq ft — $265">Premier Turnover (1,001–1,800 sq ft) — $265</option>
                 <option value="Elite Turnover — 1,801–2,500 sq ft — $365">Elite Turnover (1,801–2,500 sq ft) — $365</option>
@@ -1060,13 +1119,13 @@
               </select>
             </div>
             <div class="form-group">
-              <label>Preferred Date</label>
-              <input type="date" id="prefDate">
+              <label for="prefDate">Preferred Date</label>
+              <input type="date" id="prefDate" name="preferredDate">
             </div>
           </div>
 
           <div class="quote-toggle">
-            <input type="checkbox" id="customQuoteCheck" onchange="toggleCustomQuote(this)">
+            <input type="checkbox" id="customQuoteCheck" name="customQuote" value="yes" onchange="toggleCustomQuote(this)">
             <div class="quote-toggle-text">
               <strong>Need a custom quote?</strong>
               Check here for oversized properties, heavy-soil conditions, post-construction, or occupied move-outs.
@@ -1075,44 +1134,45 @@
 
           <div class="custom-quote-fields" id="customFields">
             <div class="form-group" style="margin-bottom:0.8rem;">
-              <label>Property Size (sq ft)</label>
-              <input type="text" id="sqft" placeholder="e.g. 3,200">
+              <label for="sqft">Property Size (sq ft)</label>
+              <input type="text" id="sqft" name="squareFeet" placeholder="e.g. 3,200" maxlength="40" inputmode="numeric">
             </div>
             <div class="form-group" style="margin-bottom:0;">
-              <label>Describe the Situation</label>
-              <textarea id="situation" placeholder="Post-tenant, construction clean, heavy grease, occupied transition..."></textarea>
+              <label for="situation">Describe the Situation</label>
+              <textarea id="situation" name="situation" placeholder="Post-tenant, construction clean, heavy grease, occupied transition..." maxlength="2000"></textarea>
             </div>
           </div>
 
           <div class="form-group">
-            <label>Add-Ons (optional)</label>
-            <select id="addons">
+            <label for="addonSelect">Add-Ons (optional)</label>
+            <select id="addonSelect" name="addOn">
               <option value="">— Select add-ons or note below —</option>
-              <option>Interior Window Wash (+$45)</option>
-              <option>Carpet Spot Treatment (+$55)</option>
-              <option>Oven Deep Clean (+$35)</option>
-              <option>Grout & Tile Scrub (+$50)</option>
-              <option>Fridge Interior Detail (+$40)</option>
-              <option>Odor Neutralization (+$30)</option>
-              <option>Garage Sweep (+$45)</option>
-              <option>Rush / Same-Day (+$75)</option>
+              <option value="Interior Window Wash (+$45)">Interior Window Wash (+$45)</option>
+              <option value="Carpet Spot Treatment (+$55)">Carpet Spot Treatment (+$55)</option>
+              <option value="Oven Deep Clean (+$35)">Oven Deep Clean (+$35)</option>
+              <option value="Grout & Tile Scrub (+$50)">Grout & Tile Scrub (+$50)</option>
+              <option value="Fridge Interior Detail (+$40)">Fridge Interior Detail (+$40)</option>
+              <option value="Odor Neutralization (+$30)">Odor Neutralization (+$30)</option>
+              <option value="Garage Sweep (+$45)">Garage Sweep (+$45)</option>
+              <option value="Rush / Same-Day (+$75)">Rush / Same-Day (+$75)</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label>Additional Notes</label>
-            <textarea id="notes" placeholder="Gate code, lockbox info, access notes, specific concerns..."></textarea>
+            <label for="notes">Additional Notes</label>
+            <textarea id="notes" name="notes" placeholder="Gate code, lockbox info, access notes, specific concerns..." maxlength="3000"></textarea>
           </div>
 
-          <button class="submit-btn" onclick="submitForm()">Submit Booking Request →</button>
+          <button type="submit" class="submit-btn" id="submitButton">Submit Booking Request →</button>
+          <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
           <p style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;text-align:center;">We'll confirm within 2 business hours. No charge until service is complete.</p>
-        </div>
+        </form>
 
         <div class="success-msg" id="successMsg">
           <div class="check">✦</div>
           <h3>Request Received</h3>
           <p>Thank you — we'll reach out within 2 business hours to confirm your booking details.</p>
-          <p style="margin-top:0.5rem;">Questions? Email us at <strong style="color:var(--gold);">hello@luminellc.org</strong></p>
+          <p style="margin-top:0.5rem;">Questions? Email us at <a href="mailto:hello@luminellc.org" style="color:var(--gold);font-weight:600;">hello@luminellc.org</a></p>
         </div>
       </div>
     </div>
@@ -1125,7 +1185,7 @@
     <h2>Prefer to Talk It Through?</h2>
     <p>Reach out directly for large portfolios, recurring service agreements, or same-day needs.</p>
     <div class="contact-options">
-      <a href="tel:+14042550000" class="contact-opt">📞 (404) 255-0000</a>
+      <a href="tel:+17703761393" class="contact-opt">📞 770-376-1393</a>
       <a href="mailto:hello@luminellc.org" class="contact-opt">✉ hello@luminellc.org</a>
       <a href="#booking" class="contact-opt">📋 Custom Quote Form</a>
     </div>
@@ -1173,27 +1233,71 @@
   });
 
   // Set min date to today
-  const today = new Date().toISOString().split('T')[0];
+  const now = new Date();
+  const today = [
+    now.getFullYear(),
+    String(now.getMonth() + 1).padStart(2, '0'),
+    String(now.getDate()).padStart(2, '0')
+  ].join('-');
   document.getElementById('prefDate').min = today;
 
-  function submitForm() {
-    const required = ['firstName', 'lastName', 'email', 'phone', 'address'];
-    let valid = true;
-    required.forEach(id => {
-      const el = document.getElementById(id);
-      if (!el.value.trim()) {
-        el.style.borderColor = '#E05A5A';
-        valid = false;
-      } else {
-        el.style.borderColor = '';
-      }
+  async function submitForm(event) {
+    event.preventDefault();
+
+    const form = document.getElementById('formContent');
+    const submitButton = document.getElementById('submitButton');
+    const formStatus = document.getElementById('formStatus');
+    const originalButtonText = submitButton.textContent;
+
+    formStatus.textContent = '';
+    form.querySelectorAll('[aria-invalid="true"]').forEach(field => {
+      field.removeAttribute('aria-invalid');
+      field.style.borderColor = '';
     });
-    if (!valid) {
-      alert('Please fill in all required fields.');
-      return;
+
+    if (!form.reportValidity()) {
+      return false;
     }
-    document.getElementById('formContent').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
+
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.customQuote = document.getElementById('customQuoteCheck').checked ? 'yes' : 'no';
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending…';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        (result.fields || []).forEach(id => {
+          const field = document.getElementById(id);
+          if (field) {
+            field.setAttribute('aria-invalid', 'true');
+            field.style.borderColor = '#E05A5A';
+          }
+        });
+        formStatus.textContent = result.message || 'We could not send your request right now. Please email hello@luminellc.org.';
+        return false;
+      }
+
+      form.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    } catch {
+      formStatus.textContent = 'We could not send your request right now. Please email hello@luminellc.org.';
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    }
+
+    return false;
   }
 </script>
 </body>
