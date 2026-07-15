@@ -12,7 +12,7 @@ const validSubmission = {
   package: 'Standard Turnover',
   preferredDate: '2026-07-15',
   customQuote: 'no',
-  squareFeet: '',
+  bedroomCount: '2 bedrooms',
   situation: '',
   addOn: 'Oven Deep Clean',
   notes: 'Gate code supplied by phone.',
@@ -76,6 +76,7 @@ test('sends a validated booking through Resend', async () => {
   assert.equal(outgoing.url, 'https://api.resend.com/emails');
   assert.equal(outgoing.body.to[0], 'hello@luminellc.org');
   assert.equal(outgoing.body.reply_to, 'bianca@example.com');
+  assert.match(outgoing.body.text, /Bedroom count: 2 bedrooms/);
   assert.match(outgoing.body.text, /Gate code supplied by phone/);
   assert.equal(outgoing.options.headers.Authorization, 'Bearer re_test');
 });

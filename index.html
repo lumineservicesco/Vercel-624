@@ -159,6 +159,32 @@
     flex-wrap: wrap;
   }
 
+  .hero-trust {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 1.35rem;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 999px;
+    color: rgba(255,255,255,0.82);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero-trust-icon {
+    display: grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.75rem;
+  }
+
   .btn-primary {
     background: var(--gold);
     color: var(--navy);
@@ -362,6 +388,14 @@
   }
 
   .price-card.featured .price-num { color: var(--white); }
+
+  .estimate-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--navy);
+  }
 
   .price-unit {
     font-size: 0.8rem;
@@ -776,6 +810,60 @@
 
   .contact-opt:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
 
+  /* PAYMENTS */
+  #payments {
+    padding: 4.5rem 2.5rem;
+    background: var(--white);
+    border-top: 1px solid #E4DDD1;
+  }
+
+  .payments-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .payments-inner .section-tag {
+    justify-content: center;
+    margin-bottom: 0.8rem;
+  }
+
+  .payments-inner .section-sub {
+    margin: 0 auto 2.25rem;
+  }
+
+  .payments-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .payment-card {
+    min-height: 112px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 0.75rem;
+    background: var(--cream);
+    border: 1px solid #E4DDD1;
+    border-radius: 4px;
+  }
+
+  .payment-card img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+  }
+
+  .payment-card span {
+    color: var(--navy);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
   /* FOOTER */
   footer {
     background: var(--dark);
@@ -801,6 +889,7 @@
   /* RESPONSIVE */
   @media (max-width: 1100px) {
     .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    .payments-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
 
   @media (max-width: 900px) {
@@ -809,8 +898,10 @@
     .hero-grid, .booking-layout { grid-template-columns: 1fr; }
     .pricing-grid { grid-template-columns: 1fr; }
     .addons-grid { grid-template-columns: 1fr 1fr; }
+    .payments-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .form-row { grid-template-columns: 1fr; }
     section { padding: 4rem 1.5rem; }
+    #payments { padding: 4rem 1.5rem; }
   }
 
   /* ANIMATIONS */
@@ -846,6 +937,10 @@
         <a href="#booking" class="btn-primary">Book a Clean</a>
         <a href="#pricing" class="btn-outline">View Pricing</a>
       </div>
+      <div class="hero-trust">
+        <span class="hero-trust-icon" aria-hidden="true">✓</span>
+        <span>Insured and Licensed</span>
+      </div>
     </div>
     <div class="hero-stats">
       <div class="stat-card">
@@ -853,12 +948,12 @@
         <div class="stat-label">Turnaround available</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">2.5k</div>
-        <div class="stat-label">Sq ft max per service</div>
+        <div class="stat-num">5BR+</div>
+        <div class="stat-label">Custom quotes available</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Metro Atlanta markets</div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">Metro Atlanta service areas</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">10+</div>
@@ -880,10 +975,9 @@
         <div class="price-card-name">Office Cleaning</div>
         <p style="font-size:0.82rem;color:var(--muted);line-height:1.5;margin-bottom:0.5rem;">Tailored for modern professional work environments</p>
         <div class="price-amount">
-          <span class="price-dollar">$</span>
-          <span class="price-num">150</span>
+          <span class="estimate-text">Free Estimate</span>
         </div>
-        <div class="price-range">Starting Package Rate</div>
+        <div class="price-range">Customized for your workspace</div>
         <div class="price-divider"></div>
         <ul class="price-features">
           <li>Desk surface wiping & sanitizing</li>
@@ -893,7 +987,7 @@
           <li>Restroom cleaning & restocking</li>
           <li>Common area dusting</li>
         </ul>
-        <button class="price-card-btn" onclick="selectPackage('Office Cleaning — Starting at $150')">Book Office Clean</button>
+        <button class="price-card-btn" onclick="selectPackage('Office Cleaning — Request Free Estimate')">Request Free Estimate</button>
       </div>
 
       <div class="price-card">
@@ -904,7 +998,7 @@
           <span class="price-dollar">$</span>
           <span class="price-num">175</span>
         </div>
-        <div class="price-range">Up to 1,000 sq ft</div>
+        <div class="price-range">Studio–2BR</div>
         <div class="price-divider"></div>
         <ul class="price-features">
           <li>Full kitchen & bathroom deep clean</li>
@@ -914,7 +1008,7 @@
           <li>Interior windows & mirrors</li>
           <li>Trash removal</li>
         </ul>
-        <button class="price-card-btn" onclick="selectPackage('Standard Turnover — Up to 1,000 sq ft — $175')">Book This Package</button>
+        <button class="price-card-btn" onclick="selectPackage('Standard Turnover — Studio–2BR — $175')">Book This Package</button>
       </div>
 
       <div class="price-card featured">
@@ -926,7 +1020,7 @@
           <span class="price-dollar">$</span>
           <span class="price-num">265</span>
         </div>
-        <div class="price-range">1,001–1,800 sq ft</div>
+        <div class="price-range">3BR</div>
         <div class="price-divider"></div>
         <ul class="price-features">
           <li>Everything in Standard, plus:</li>
@@ -937,7 +1031,7 @@
           <li>Walk-in closet detail</li>
           <li>Priority scheduling</li>
         </ul>
-        <button class="price-card-btn" onclick="selectPackage('Premier Turnover — 1,001–1,800 sq ft — $265')">Book This Package</button>
+        <button class="price-card-btn" onclick="selectPackage('Premier Turnover — 3BR — $265')">Book This Package</button>
       </div>
 
       <div class="price-card">
@@ -948,7 +1042,7 @@
           <span class="price-dollar">$</span>
           <span class="price-num">365</span>
         </div>
-        <div class="price-range">1,801–2,500 sq ft</div>
+        <div class="price-range">4BR</div>
         <div class="price-divider"></div>
         <ul class="price-features">
           <li>Everything in Premier, plus:</li>
@@ -959,12 +1053,12 @@
           <li>Post-clean walkthrough</li>
           <li>Same-day rebook priority</li>
         </ul>
-        <button class="price-card-btn" onclick="selectPackage('Elite Turnover — 1,801–2,500 sq ft — $365')">Book This Package</button>
+        <button class="price-card-btn" onclick="selectPackage('Elite Turnover — 4BR — $365')">Book This Package</button>
       </div>
     </div>
 
     <p style="text-align:center;font-size:0.82rem;color:var(--muted);margin-top:0.5rem;">
-      ✦ &nbsp;Prices reflect vacant properties or standardized floor spaces in typical condition. Heavy-soil environments may require a custom quote. &nbsp;✦
+      ✦ &nbsp;Residential pricing reflects homes in standard condition. 5BR+ or heavy-soil properties require a custom quote. &nbsp;✦
     </p>
   </div>
 </section>
@@ -1064,6 +1158,7 @@
           <div style="display:flex;flex-direction:column;gap:0.5rem;">
             <div style="font-size:0.85rem;color:var(--navy);font-weight:500;">📍 Covington / Newton County</div>
             <div style="font-size:0.85rem;color:var(--navy);font-weight:500;">📍 Henry County</div>
+            <div style="font-size:0.85rem;color:var(--navy);font-weight:500;">📍 Rockdale County</div>
             <div style="font-size:0.85rem;color:var(--muted);">📍 Griffin / Lamar County <span style="font-size:0.75rem;">(coming soon)</span></div>
           </div>
         </div>
@@ -1111,11 +1206,11 @@
               <label for="packageSelect">Package</label>
               <select id="packageSelect" name="package">
                 <option value="">— Select a package —</option>
-                <option value="Office Cleaning — Starting at $150">Office Cleaning (Workspace plan) — From $150</option>
-                <option value="Standard Turnover — Up to 1,000 sq ft — $175">Standard Turnover (up to 1k sq ft) — $175</option>
-                <option value="Premier Turnover — 1,001–1,800 sq ft — $265">Premier Turnover (1,001–1,800 sq ft) — $265</option>
-                <option value="Elite Turnover — 1,801–2,500 sq ft — $365">Elite Turnover (1,801–2,500 sq ft) — $365</option>
-                <option value="custom">Request Custom Quote</option>
+                <option value="Office Cleaning — Request Free Estimate">Office Cleaning — Request Free Estimate</option>
+                <option value="Standard Turnover — Studio–2BR — $175">Standard Turnover — Studio–2BR — $175</option>
+                <option value="Premier Turnover — 3BR — $265">Premier Turnover — 3BR — $265</option>
+                <option value="Elite Turnover — 4BR — $365">Elite Turnover — 4BR — $365</option>
+                <option value="5BR+ — Custom Quote">5BR+ — Request Custom Quote</option>
               </select>
             </div>
             <div class="form-group">
@@ -1128,14 +1223,24 @@
             <input type="checkbox" id="customQuoteCheck" name="customQuote" value="yes" onchange="toggleCustomQuote(this)">
             <div class="quote-toggle-text">
               <strong>Need a custom quote?</strong>
-              Check here for oversized properties, heavy-soil conditions, post-construction, or occupied move-outs.
+              Check here for 5BR+ homes, heavy-soil conditions, post-construction, occupied move-outs, or other custom needs.
             </div>
           </div>
 
           <div class="custom-quote-fields" id="customFields">
             <div class="form-group" style="margin-bottom:0.8rem;">
-              <label for="sqft">Property Size (sq ft)</label>
-              <input type="text" id="sqft" name="squareFeet" placeholder="e.g. 3,200" maxlength="40" inputmode="numeric">
+              <label for="bedroomCount">Bedroom Count</label>
+              <select id="bedroomCount" name="bedroomCount">
+                <option value="">— Select bedroom count —</option>
+                <option value="Studio">Studio</option>
+                <option value="1 bedroom">1 bedroom</option>
+                <option value="2 bedrooms">2 bedrooms</option>
+                <option value="3 bedrooms">3 bedrooms</option>
+                <option value="4 bedrooms">4 bedrooms</option>
+                <option value="5 bedrooms">5 bedrooms</option>
+                <option value="6+ bedrooms">6+ bedrooms</option>
+                <option value="Not applicable — office/commercial">Not applicable — office/commercial</option>
+              </select>
             </div>
             <div class="form-group" style="margin-bottom:0;">
               <label for="situation">Describe the Situation</label>
@@ -1179,6 +1284,22 @@
   </div>
 </section>
 
+<section id="payments">
+  <div class="payments-inner">
+    <div class="section-tag">Flexible Payment Options</div>
+    <h2 class="section-title">Payments Accepted</h2>
+    <p class="section-sub">Choose the payment method that works best for you after your service is complete.</p>
+    <div class="payments-grid" aria-label="Accepted payment methods">
+      <div class="payment-card"><img src="assets/payments/zelle.svg" alt="" aria-hidden="true"><span>Zelle</span></div>
+      <div class="payment-card"><img src="assets/payments/applepay.svg" alt="" aria-hidden="true"><span>Apple Pay</span></div>
+      <div class="payment-card"><img src="assets/payments/venmo.svg" alt="" aria-hidden="true"><span>Venmo</span></div>
+      <div class="payment-card"><img src="assets/payments/cashapp.svg" alt="" aria-hidden="true"><span>Cash App</span></div>
+      <div class="payment-card"><img src="assets/payments/visa.svg" alt="" aria-hidden="true"><span>Visa</span></div>
+      <div class="payment-card"><img src="assets/payments/mastercard.svg" alt="" aria-hidden="true"><span>Mastercard</span></div>
+    </div>
+  </div>
+</section>
+
 <div class="contact-banner" id="contact">
   <div class="contact-banner-inner">
     <div class="section-tag" style="justify-content:center;margin-bottom:0.8rem;">Get In Touch</div>
@@ -1194,19 +1315,25 @@
 
 <footer>
   <div class="footer-logo">Luminé<span> Services Co.</span></div>
-  <p>Metro Atlanta · Covington · Henry County · Griffin &nbsp;|&nbsp; Light commercial cleaning, redefined.</p>
+  <p>Metro Atlanta · Covington · Newton · Henry · Rockdale · Griffin &nbsp;|&nbsp; Light commercial cleaning, redefined.</p>
 </footer>
 
 <script>
+  const CUSTOM_PACKAGE_VALUE = '5BR+ — Custom Quote';
+
+  function syncCustomQuoteState(packageValue) {
+    const cb = document.getElementById('customQuoteCheck');
+    const fields = document.getElementById('customFields');
+    const isCustom = packageValue === CUSTOM_PACKAGE_VALUE;
+    cb.checked = isCustom;
+    fields.classList.toggle('visible', isCustom);
+  }
+
   // Pre-select a package from pricing buttons
   function selectPackage(pkgName) {
     const sel = document.getElementById('packageSelect');
-    for (let i = 0; i < sel.options.length; i++) {
-      if (sel.options[i].value === pkgName) {
-        sel.selectedIndex = i;
-        break;
-      }
-    }
+    sel.value = pkgName;
+    syncCustomQuoteState(sel.value);
     document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
   }
 
@@ -1215,21 +1342,15 @@
     const fields = document.getElementById('customFields');
     fields.classList.toggle('visible', cb.checked);
     if (cb.checked) {
-      document.getElementById('packageSelect').value = 'custom';
+      document.getElementById('packageSelect').value = CUSTOM_PACKAGE_VALUE;
+    } else if (document.getElementById('packageSelect').value === CUSTOM_PACKAGE_VALUE) {
+      document.getElementById('packageSelect').value = '';
     }
   }
 
   // Also show custom fields if dropdown picks custom
   document.getElementById('packageSelect').addEventListener('change', function() {
-    const cb = document.getElementById('customQuoteCheck');
-    const fields = document.getElementById('customFields');
-    if (this.value === 'custom') {
-      cb.checked = true;
-      fields.classList.add('visible');
-    } else {
-      cb.checked = false;
-      fields.classList.remove('visible');
-    }
+    syncCustomQuoteState(this.value);
   });
 
   // Set min date to today
